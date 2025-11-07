@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.poo2.javafx.MainController">
+   <children>
+      <Label text="Dashboard Populacional" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+      <Button fx:id="btnCarregarDados" onAction="#carregarDados" text="Carregar Dados" />
+      <Button fx:id="btnAbrirDashboard" onAction="#abrirDashboard" text="Abrir Dashboard" />
+   </children>
+</VBox>

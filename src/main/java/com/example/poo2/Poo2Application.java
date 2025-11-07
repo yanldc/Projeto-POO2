@@ -1,13 +1,11 @@
 package com.example.poo2;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.example.poo2.javafx.DashboardApp;
 
-@SpringBootApplication
 public class Poo2Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Poo2Application.class, args);
+		DashboardApp.main(args);
 	}
 
 }
