@@ -39,7 +39,7 @@ public class MunicipioDAO {
                     rs.getString("nome"),
                     String.valueOf(rs.getInt("id")),
                     rs.getInt("populacao"),
-                    0.0, // área não está no banco
+                    0.0,
                     rs.getInt("ano")
                 );
                 municipios.add(municipio);

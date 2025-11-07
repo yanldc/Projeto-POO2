@@ -6,16 +6,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class LeitorDados {
-    private Map<String, List<String>> dadosBrutos;
     private List<Municipio> municipios;
     
     public LeitorDados() {
-        this.dadosBrutos = new HashMap<>();
         this.municipios = new ArrayList<>();
     }
     
@@ -51,7 +47,5 @@ public class LeitorDados {
         return municipios;
     }
     
-    public Map<String, List<String>> getDadosBrutos() {
-        return dadosBrutos;
-    }
+
 }

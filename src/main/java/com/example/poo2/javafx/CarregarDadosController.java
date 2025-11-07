@@ -1,13 +1,12 @@
 package com.example.poo2.javafx;
 
-import com.example.poo2.dao.EstadoDAO;
-import com.example.poo2.dao.MunicipioDAO;
+import com.example.poo2.dao.*;
 import com.example.poo2.excecoes.ArquivoInvalidoException;
 import com.example.poo2.leitor.LeitorDados;
-import com.example.poo2.modelo.Estado;
-import com.example.poo2.modelo.Municipio;
+import com.example.poo2.modelo.*;
 import javafx.scene.control.Alert;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.*;
 
 public class CarregarDadosController {
     
@@ -19,14 +18,30 @@ public class CarregarDadosController {
             EstadoDAO estadoDAO = new EstadoDAO();
             MunicipioDAO municipioDAO = new MunicipioDAO();
             
-            // Salvar dados no banco
+            limparDados();
+            Map<String, String> nomesEstados = obterNomesEstados();
+            Set<String> estadosSalvos = new HashSet<>();
             for (Municipio municipio : leitor.getMunicipios()) {
-                // Criar estado fictício baseado no código do município
                 String siglaEstado = municipio.getCodigo().substring(0, 2);
-                Estado estado = new Estado("Estado " + siglaEstado, "1", siglaEstado);
                 
-                estadoDAO.salvar(estado);
-                municipioDAO.salvar(municipio, 1); // ID fixo para exemplo
+                if (!estadosSalvos.contains(siglaEstado)) {
+                    String nomeEstado = nomesEstados.getOrDefault(siglaEstado, gerarNomeEstado(siglaEstado));
+                    Estado estado = new Estado(nomeEstado, siglaEstado, siglaEstado);
+                    estadoDAO.salvar(estado);
+                    estadosSalvos.add(siglaEstado);
+                }
+            }
+            
+            for (Municipio municipio : leitor.getMunicipios()) {
+                ValidadorDados.validarPopulacao(municipio.getPopulacao());
+                ValidadorDados.validarAno(municipio.getAno());
+                
+                String siglaEstado = municipio.getCodigo().substring(0, 2);
+                Estado estado = estadoDAO.buscarPorSigla(siglaEstado);
+                if (estado != null) {
+                    int idEstado = Integer.parseInt(estado.getCodigo());
+                    municipioDAO.salvar(municipio, idEstado);
+                }
             }
             
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -55,6 +70,33 @@ public class CarregarDadosController {
             alert.setHeaderText("Erro inesperado");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
+        }
+    }
+    
+    private static Map<String, String> obterNomesEstados() {
+        Map<String, String> nomes = new HashMap<>();
+        nomes.put("SP", "São Paulo");
+        nomes.put("RJ", "Rio de Janeiro");
+        nomes.put("MG", "Minas Gerais");
+        nomes.put("RS", "Rio Grande do Sul");
+        nomes.put("PR", "Paraná");
+        nomes.put("SC", "Santa Catarina");
+        nomes.put("BA", "Bahia");
+        nomes.put("GO", "Goiás");
+        nomes.put("PE", "Pernambuco");
+        nomes.put("CE", "Ceará");
+        return nomes;
+    }
+    
+    private static String gerarNomeEstado(String sigla) {
+        return "Estado de " + sigla;
+    }
+    
+    private static void limparDados() {
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            conn.prepareStatement("DELETE FROM municipio").executeUpdate();
+            conn.prepareStatement("DELETE FROM estado").executeUpdate();
+        } catch (SQLException ignored) {
         }
     }
 }

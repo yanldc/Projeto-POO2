@@ -30,7 +30,7 @@ public class EstadoDAO {
             while (rs.next()) {
                 Estado estado = new Estado(
                     rs.getString("nome"),
-                    String.valueOf(rs.getInt("id")),
+                    String.valueOf(rs.getInt("id")), // ID do banco como código
                     rs.getString("sigla")
                 );
                 estados.add(estado);
@@ -51,7 +51,7 @@ public class EstadoDAO {
             if (rs.next()) {
                 return new Estado(
                     rs.getString("nome"),
-                    String.valueOf(rs.getInt("id")),
+                    String.valueOf(rs.getInt("id")), // ID do banco como código
                     rs.getString("sigla")
                 );
             }

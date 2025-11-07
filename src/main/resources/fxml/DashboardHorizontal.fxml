@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.poo2.javafx.DashboardHorizontalController" spacing="15" style="-fx-padding: 20;">
+    <children>
+        <Label text="Dashboard Completo - População por Estado" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+        <HBox spacing="20">
+            <children>
+                <VBox spacing="10">
+                    <children>
+                        <Label text="Gráfico de Barras Horizontais" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <ProgressIndicator fx:id="progressBar" visible="false" />
+
+                        <ScrollPane prefHeight="400" prefWidth="700">
+                            <content>
+                                <BarChart fx:id="barChart" title="Top 5 Estados">
+                                    <xAxis>
+                                        <NumberAxis fx:id="xAxis" side="BOTTOM" label="População (Milhões)" />
+                                    </xAxis>
+                                    <yAxis>
+                                        <CategoryAxis fx:id="yAxis" side="LEFT" />
+                                    </yAxis>
+                                </BarChart>
+                            </content>
+                        </ScrollPane>
+
+                    </children>
+                </VBox>
+                <VBox spacing="10">
+                    <children>
+                        <Label text="Gráfico de Pizza" style="-fx-font-size: 14px; -fx-font-weight: bold;" />
+                        <ProgressIndicator fx:id="progressPie" visible="false" />
+                        <PieChart fx:id="pieChart" title="Distribuição Populacional" prefHeight="500" prefWidth="500" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+    </children>
+</VBox>

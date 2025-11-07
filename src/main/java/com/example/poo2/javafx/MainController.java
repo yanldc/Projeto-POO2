@@ -37,10 +37,10 @@ public class MainController {
     @FXML
     private void abrirDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DashboardCompleto.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DashboardHorizontal.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = new Stage();
-            stage.setTitle("Dashboard Completo - Multithread");
+            stage.setTitle("Dashboard Horizontal - População por Estado");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
