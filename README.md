@@ -13,6 +13,7 @@ Sistema completo para análise de dados populacionais com interface gráfica, pe
 ## 📋 Funcionalidades Implementadas
 
 ### Parte 1 - Modelagem e Estruturas de Dados ✅
+
 - ✅ **Linguagem**: Variáveis, seletores, loops, organização em pacotes
 - ✅ **Estruturas de Dados**: Leitura CSV, ArrayList, HashMap, ordenação
 - ✅ **Orientação a Objetos**: 17 classes, encapsulamento completo
@@ -21,6 +22,7 @@ Sistema completo para análise de dados populacionais com interface gráfica, pe
 - ✅ **Exceções**: `ArquivoInvalidoException` customizada
 
 ### Parte 2 - Interface, Persistência e Multithread ✅
+
 - ✅ **JavaFX**: Tela inicial, carregamento de dados, dashboards
 - ✅ **Gráficos**: BarChart (Top 5 estados) + PieChart (distribuição)
 - ✅ **JDBC**: Persistência MySQL com padrão DAO
@@ -101,17 +103,20 @@ Belo Horizonte,MG001,2530701,331.40,2023
 ## 🎨 Recursos Técnicos
 
 ### Multithread
+
 - **BarChart**: Thread separada para Top 5 estados
 - **PieChart**: Thread paralela para distribuição completa
 - **Interface Responsiva**: ProgressIndicators durante carregamento
 
 ### Validação e Tratamento de Erros
+
 - **SQLException**: Falha de conexão com banco
 - **ArquivoInvalidoException**: Formato incorreto de arquivo
 - **IllegalArgumentException**: População negativa, ano inválido
 - **Alerts JavaFX**: Mensagens amigáveis ao usuário
 
 ### Padrões Implementados
+
 - **DAO Pattern**: Separação de persistência
 - **MVC Pattern**: Controllers JavaFX
 - **Factory Pattern**: ConnectionFactory
@@ -120,24 +125,14 @@ Belo Horizonte,MG001,2530701,331.40,2023
 ## 📈 Dashboards
 
 ### BarChart Horizontal
+
 - **Top 5 estados** por população
 - **Nomes visíveis** no eixo Y
 - **Valores em milhões** no eixo X
 - **Ordenação automática**
 
 ### PieChart
+
 - **Todos os estados** com distribuição percentual
 - **Legenda detalhada** com valores
 - **Cores automáticas**
-
-## ✅ Conformidade Acadêmica
-
-Projeto 100% conforme aos requisitos:
-- ✅ **Linguagem de Programação** completa
-- ✅ **Estruturas de Dados** adequadas
-- ✅ **Orientação a Objetos** (17 classes)
-- ✅ **Herança e Polimorfismo** implementados
-- ✅ **JavaFX** com gráficos interativos
-- ✅ **JDBC** com MySQL
-- ✅ **Multithread** funcional
-- ✅ **Tratamento de Exceções** robusto
